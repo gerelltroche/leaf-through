@@ -36,24 +36,11 @@ def fetch_and_parse(url):
     
     bible_text = soup.find(id='bibleText')
     verses = bible_text.find_all(class_='verse') if bible_text else []
+    footnotes = soup.find_all(class_='footnotes')
 
     # Create an array of objects
     verse_texts = [clean_verse(verse.get_text()) for verse in verses]
-
-    footnotes = soup.find_all(class_='footnotes')
-
     footnotes_filtered = [fn for fn in footnotes if 'none' not in fn.get('class', [])]
-
-    for footnote in footnotes_filtered:
-        print(footnote)
-
-#     $('.footnotes').not('[class*="none"]').each(function() {
-#     var $footnote = $(this);
-#     var $sectionHeading = $footnote.prev('.sectionHeading');
-
-#     console.log($sectionHeading.innerText)
-#     console.log($footnote)
-# });
 
     return verse_texts
 

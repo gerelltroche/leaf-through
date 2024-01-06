@@ -11,9 +11,6 @@
 		"lerna": "^8.0.1"
 	},
 	"scripts": {
-		"start": "lerna run start",
-		"dev": "lerna run dev",
-		"build": "lerna run build",
-		"test": "lerna run test"
+		"start:parser": "cd ./packages/bible-parser && python script.py"
 	}
 }
