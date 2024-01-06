@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
 import openai
 from prompt_template import generate_prompt
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
-# TODO: Move to .env
-openai.api_key = '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'
+load_dotenv()
+openai.api_key = os.getenv('SCRAPE_ASSISTANT_OPEN_AI_KEY')
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
